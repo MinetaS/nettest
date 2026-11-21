@@ -11,7 +11,7 @@ from .utils import (
     final_path,
     supports_numactl,
     flatten_cmd,
-    github_repo_url,
+    git_repo_source,
     net_url,
 )
 from .default_environment import get_default_environment
@@ -29,7 +29,7 @@ def ensure_trainer(trainer):
 
     sha = trainer["sha"]
     owner = trainer["owner"]
-    repo = github_repo_url(owner, "nnue-pytorch")
+    repo = git_repo_source(owner, "nnue-pytorch")
 
     trainer_dir = Path.cwd() / f"scratch/packages/trainer/{sha}"
     nnue_pytorch_dir = trainer_dir / "nnue-pytorch"

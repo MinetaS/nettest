@@ -147,7 +147,9 @@ def github_ssh_available() -> bool:
     )
 
 
-def github_repo_url(owner: str, repo: str) -> str:
+def git_repo_source(owner: str, repo: str) -> str:
+    if owner == "<local>":
+        return f"/workspace/{repo}"
     if github_ssh_available():
         return f"git@github.com:{owner}/{repo}.git"
     return f"https://github.com/{owner}/{repo}.git"

@@ -16,7 +16,7 @@ from .utils import (
     execute,
     final_path,
     flatten_cmd,
-    github_repo_url,
+    git_repo_source,
     reroot_config_paths,
 )
 
@@ -31,7 +31,7 @@ def ensure_matecheck():
 
     sha = "b2d37d2eb290d638fce91e180454615c1eab72f8"
     owner = "vondele"
-    repo = github_repo_url(owner, "matetrack")
+    repo = git_repo_source(owner, "matetrack")
     base_dir = Path.cwd() / f"scratch/packages/matetrack/{sha}"
 
     matecheck = base_dir / "matetrack" / "matecheck.py"
@@ -110,7 +110,7 @@ def ensure_fastchess(fastchess):
 
     sha = fastchess["code"]["sha"]
     owner = fastchess["code"]["owner"]
-    repo = github_repo_url(owner, "fastchess")
+    repo = git_repo_source(owner, "fastchess")
 
     base_dir = Path.cwd() / f"scratch/packages/fastchess/{sha}"
     fastchess_binary = base_dir / "fastchess" / "fastchess"
@@ -193,7 +193,7 @@ def ensure_stockfish(target, test):
     sha = target_config["code"]["sha"]
     owner = target_config["code"]["owner"]
     target_build = target_config["code"].get("target", "profile-build")
-    repo = github_repo_url(owner, "Stockfish")
+    repo = git_repo_source(owner, "Stockfish")
 
     target_dir = Path.cwd() / f"scratch/packages/stockfish/{sha}-{target_build}"
     stockfish_binary = target_dir / "Stockfish" / "src" / "stockfish"
